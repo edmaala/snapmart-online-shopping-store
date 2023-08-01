@@ -3,7 +3,14 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['xo', 'plugin:react/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'airbnb',
+    'airbnb/hooks',
+    'airbnb-typescript',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
   overrides: [
     {
       env: {
@@ -14,16 +21,15 @@ module.exports = {
         sourceType: 'script',
       },
     },
-    {
-      extends: ['xo-typescript'],
-      files: ['*.ts', '*.tsx'],
-    },
   ],
-  ignorePatterns: ['vite.config.ts', 'vite-env.d.ts'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
-  rules: {},
+  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  rules: {
+    'react/react-in-jsx-scope': 0,
+  },
 };
