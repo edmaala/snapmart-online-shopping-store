@@ -1,0 +1,119 @@
+import { createTheme } from '@mui/material';
+
+const PROJECT_THEME = createTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+      light: '#FFFFFF',
+    },
+    secondary: {
+      main: '#CBCBCB',
+      light: '#F3F3F3',
+      dark: '#505050',
+    },
+    success: {
+      main: '#A5F951',
+      dark: '#6ABD81',
+    },
+    error: {
+      main: '#EB3838',
+    },
+  },
+  typography: {
+    fontFamily: 'Inter, sans-serif',
+    fontSize: 14,
+    h1: {
+      fontSize: '2rem',
+      fontWeight: '700',
+    },
+    h2: {
+      fontSize: '1.7rem',
+      fontWeight: '700',
+    },
+    h3: {
+      fontSize: '1.4rem',
+      fontWeight: '600',
+    },
+    body1: {
+      fontSize: '1rem',
+      fontWeight: '400',
+    },
+    button: {
+      fontSize: '1rem',
+      fontWeight: '500',
+    },
+    'button-sml': {
+      fontSize: '0.8rem',
+      fontWeight: '500',
+    },
+  },
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: {
+            variant: 'contained',
+            sx: { bgcolor: 'success.main', color: 'primary.main' },
+          },
+          style: {
+            padding: '12px 24px',
+            borderRadius: '10px',
+            fontSize: '1rem',
+            fontWeight: '500',
+          },
+        },
+        {
+          props: {
+            variant: 'contained-sml',
+            sx: { bgcolor: 'success.main', color: 'primary.main' },
+          },
+          style: {
+            padding: '8px',
+            borderRadius: '8px',
+            fontSize: '0.8rem',
+            fontWeight: '500',
+          },
+        },
+        {
+          props: {
+            variant: 'contained-sml-red',
+            sx: { bgcolor: 'error.main', color: 'primary.main' },
+          },
+          style: {
+            padding: '8px',
+            borderRadius: '8px',
+            fontSize: '0.8rem',
+            fontWeight: '500',
+          },
+        },
+      ],
+    },
+  },
+});
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    'button-sml': React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    'button-sml'?: React.CSSProperties;
+  }
+}
+
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    'button-sml': true;
+  }
+}
+
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    'contained-sml': true;
+    'contained-sml-red': true;
+  }
+}
+
+export default PROJECT_THEME;
