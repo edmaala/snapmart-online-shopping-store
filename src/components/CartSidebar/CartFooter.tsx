@@ -1,9 +1,21 @@
-import { useContext } from 'react';
-import { Stack, Typography, Button } from '@mui/material';
+import { useContext, useState } from 'react';
+import {
+  Stack,
+  Typography,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material';
 import { ProjectContext } from '../../project-provider';
 
 export default function CartFooter() {
-  const { cartItems } = useContext(ProjectContext);
+  const { cartItems, resetCart } = useContext(ProjectContext);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+
+  const toggleSuccessDialogDisplay = () =>
+    setShowSuccessDialog((prevStatus) => !prevStatus);
 
   const { totalAmount, totalItems } = cartItems.reduce(
     (accumulator: { totalItems: number; totalAmount: number }, currentItem) => {
@@ -54,7 +66,31 @@ export default function CartFooter() {
         </Stack>
       </Stack>
 
-      <Button variant="contained">Checkout</Button>
+      <Button
+        variant="contained"
+        disabled={!totalItems}
+        onClick={() => {
+          toggleSuccessDialogDisplay();
+          resetCart();
+        }}
+      >
+        Checkout
+      </Button>
+
+      <Dialog open={showSuccessDialog} onClose={toggleSuccessDialogDisplay}>
+        <DialogTitle variant="h2">Thank you for purchasing with us</DialogTitle>
+        <DialogContent>
+          <Typography variant="body1">
+            Your order is now being processed, and will arrive after some time.
+            We ask your kind understanding and patience.
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" onClick={toggleSuccessDialogDisplay}>
+            Okay
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
   );
 }

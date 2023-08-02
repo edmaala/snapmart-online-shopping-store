@@ -29,10 +29,7 @@ export default function ProjectProvider({ children }: Props) {
     PROJECT_CONTEXT_DEFAULTS.categoryFilter
   );
 
-  const resetCart = useCallback(
-    () => setCartItems(PROJECT_CONTEXT_DEFAULTS.cartItems),
-    []
-  );
+  const resetCart = useCallback(() => setCartItems([]), []);
 
   const categoryList = useMemo(
     () =>
