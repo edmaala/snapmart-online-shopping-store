@@ -4,17 +4,18 @@ import ProjectProvider from './project-provider';
 import BodyContainer from './components/BodyContainer';
 import FilterSidebar from './components/FilterSidebar';
 import CartSidebar from './components/CartSidebar';
+import ItemList from './components/ItemList';
 
 function App() {
   return (
     <ProjectProvider>
       <Box
-        sx={{ height: '100%', width: '100%', maxWidth: '1050px', mx: 'auto' }}
+        sx={{ height: '100%', width: '100%', maxWidth: '1200px', mx: 'auto' }}
       >
         <Header />
         <BodyContainer>
           <FilterSidebar />
-          <Box sx={{ width: 'calc(100% - 500px)' }} />
+          <ItemList />
           <CartSidebar />
         </BodyContainer>
       </Box>

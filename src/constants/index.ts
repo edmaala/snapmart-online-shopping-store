@@ -25,4 +25,9 @@ type ProjectContext = {
   setCategoryFilter: React.Dispatch<React.SetStateAction<string>>;
 };
 
+export const SORT_METHODS = {
+  asc: 'asc',
+  desc: 'desc',
+};
+
 export default PROJECT_CONTEXT_DEFAULTS;

@@ -36,7 +36,7 @@ export default function FilterSidebar() {
         </ToggleButton>
 
         {hasCategories
-          ? categoryList.map((category) => (
+          ? categoryList.sort().map((category) => (
               <ToggleButton
                 key={category}
                 value={category}

@@ -5,7 +5,7 @@ import CartBody from './CartBody';
 
 export default function CartSidebar() {
   return (
-    <Stack sx={{ width: '300px', height: '100%' }}>
+    <Stack sx={{ width: '400px', height: '100%' }}>
       <CartHeader />
       <CartBody />
       <CartFooter />

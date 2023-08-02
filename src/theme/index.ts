@@ -34,6 +34,10 @@ const PROJECT_THEME = createTheme({
       fontSize: '1.4rem',
       fontWeight: '600',
     },
+    h4: {
+      fontSize: '1.2rem',
+      fontWeight: '500',
+    },
     body1: {
       fontSize: '1rem',
       fontWeight: '400',
@@ -42,6 +46,10 @@ const PROJECT_THEME = createTheme({
       fontSize: '1rem',
       fontWeight: '700',
       fontFamily: 'Inter, sans-serif',
+    },
+    subtitle1: {
+      fontSize: '0.8rem',
+      fontWeight: '500',
     },
     button: {
       fontSize: '1rem',
@@ -105,6 +113,16 @@ const PROJECT_THEME = createTheme({
               backgroundColor: '#B82C2C',
               color: '#FFFFFF',
             },
+          },
+        },
+        {
+          props: {
+            variant: 'text',
+          },
+          style: {
+            fontSize: '1rem',
+            fontWeight: '700',
+            color: '#6ABD81',
           },
         },
       ],
