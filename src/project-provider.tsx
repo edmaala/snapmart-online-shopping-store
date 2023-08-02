@@ -1,4 +1,11 @@
-import { ReactNode, createContext, useState, useMemo, useEffect } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useState,
+  useMemo,
+  useEffect,
+  useCallback,
+} from 'react';
 import PROJECT_CONTEXT_DEFAULTS from './constants';
 
 export const ProjectContext = createContext(PROJECT_CONTEXT_DEFAULTS);
@@ -6,12 +13,21 @@ export const ProjectContext = createContext(PROJECT_CONTEXT_DEFAULTS);
 export default function ProjectProvider({ children }: Props) {
   const [itemList, setItemList] = useState(PROJECT_CONTEXT_DEFAULTS.itemList);
 
+  const [cartItems, setCartItems] = useState(
+    PROJECT_CONTEXT_DEFAULTS.cartItems
+  );
+
   const [headerHeight, setHeaderHeight] = useState(
     PROJECT_CONTEXT_DEFAULTS.headerHeight
   );
 
   const [categoryFilter, setCategoryFilter] = useState(
     PROJECT_CONTEXT_DEFAULTS.categoryFilter
+  );
+
+  const resetCart = useCallback(
+    () => setCartItems(PROJECT_CONTEXT_DEFAULTS.cartItems),
+    []
   );
 
   const categoryList = useMemo(
@@ -45,10 +61,13 @@ export default function ProjectProvider({ children }: Props) {
       headerHeight,
       categoryFilter,
       categoryList,
+      cartItems,
       setHeaderHeight,
       setCategoryFilter,
+      setCartItems,
+      resetCart,
     }),
-    [itemList, headerHeight, categoryFilter, categoryList]
+    [itemList, headerHeight, categoryFilter, cartItems, categoryList, resetCart]
   );
 
   return (

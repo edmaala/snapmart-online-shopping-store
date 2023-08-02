@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Stack, Typography, Button } from '@mui/material';
+import { ProjectContext } from '../../project-provider';
 
 export default function CartHeader() {
+  const { setCartItems } = useContext(ProjectContext);
+
   return (
     <Stack
       direction="row"
@@ -15,7 +19,9 @@ export default function CartHeader() {
         My Cart
       </Typography>
 
-      <Button variant="contained-sml-red">Clear Cart</Button>
+      <Button variant="contained-sml-red" onClick={() => setCartItems([])}>
+        Clear Cart
+      </Button>
     </Stack>
   );
 }

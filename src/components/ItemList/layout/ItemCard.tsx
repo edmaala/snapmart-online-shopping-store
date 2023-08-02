@@ -1,13 +1,43 @@
+import { useContext } from 'react';
 import { Stack, Box, Typography, Button } from '@mui/material';
 import { Item } from '../../../models/item';
+import { ProjectContext } from '../../../project-provider';
 
-export default function ItemCard({
-  productName,
-  description,
-  unitPrice,
-  category,
-  imageUrl,
-}: Omit<Item, 'id'>) {
+export default function ItemCard({ itemData }: Props) {
+  const {
+    productName,
+    description,
+    unitPrice,
+    category,
+    imageUrl,
+    id: itemId,
+  } = itemData;
+
+  const { setCartItems } = useContext(ProjectContext);
+
+  const addToCartAction = () => {
+    setCartItems((prevCartItems) => {
+      const existingCartItemIndex = prevCartItems.findIndex(
+        ({ id }) => id === itemId
+      );
+
+      if (existingCartItemIndex !== -1) {
+        const existingCartItem = prevCartItems[existingCartItemIndex];
+
+        existingCartItem.qty += 1;
+        existingCartItem.totalPrice =
+          existingCartItem.qty * existingCartItem.unitPrice;
+
+        prevCartItems.splice(existingCartItemIndex, 1);
+        prevCartItems.unshift(existingCartItem);
+      } else {
+        prevCartItems.unshift({ ...itemData, qty: 1, totalPrice: unitPrice });
+      }
+
+      return [...prevCartItems];
+    });
+  };
+
   return (
     //* Card container
     <Stack
@@ -71,6 +101,7 @@ export default function ItemCard({
 
       <Button
         variant="contained-sml"
+        onClick={addToCartAction}
         sx={{ alignSelf: 'flex-end', width: '30%' }}
       >
         Add to cart
@@ -78,3 +109,7 @@ export default function ItemCard({
     </Stack>
   );
 }
+
+type Props = {
+  itemData: Item;
+};

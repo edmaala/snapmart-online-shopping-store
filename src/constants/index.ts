@@ -1,10 +1,14 @@
 import React from 'react';
-import { Item } from '../models/item';
+import { CartItem, Item } from '../models/item';
 
 const PROJECT_CONTEXT_DEFAULTS: ProjectContext = {
   itemList: [],
 
   categoryList: [],
+
+  cartItems: [],
+  setCartItems() {},
+  resetCart() {},
 
   headerHeight: 0,
   setHeaderHeight() {},
@@ -17,6 +21,10 @@ type ProjectContext = {
   itemList: Item[];
 
   categoryList: string[];
+
+  cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  resetCart: () => void;
 
   headerHeight: number;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;

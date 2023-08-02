@@ -123,6 +123,7 @@ const PROJECT_THEME = createTheme({
             fontSize: '1rem',
             fontWeight: '700',
             color: '#6ABD81',
+            minWidth: '0px',
           },
         },
       ],

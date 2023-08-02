@@ -59,25 +59,9 @@ export default function ItemList() {
               productName.includes(searchValue) ||
               category.includes(searchValue)
           )
-          .map(
-            ({
-              id,
-              productName,
-              description,
-              unitPrice,
-              category,
-              imageUrl,
-            }) => (
-              <ItemCard
-                key={id}
-                productName={productName}
-                description={description}
-                unitPrice={unitPrice}
-                category={category}
-                imageUrl={imageUrl}
-              />
-            )
-          )}
+          .map((itemData) => (
+            <ItemCard key={`item-${itemData.id}`} itemData={itemData} />
+          ))}
       </Stack>
     </Stack>
   );
