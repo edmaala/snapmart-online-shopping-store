@@ -61,7 +61,13 @@ export default function CartFooter() {
             component="span"
             sx={{ color: 'error.main', textAlign: 'right' }}
           >
-            ₱{totalAmount ? totalAmount.toLocaleString() : '0.00'}
+            ₱
+            {totalAmount
+              ? totalAmount.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })
+              : '0.00'}
           </Typography>
         </Stack>
       </Stack>

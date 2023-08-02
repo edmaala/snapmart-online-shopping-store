@@ -82,7 +82,11 @@ export default function ItemCard({ itemData }: Props) {
               variant="h3"
               sx={{ color: 'error.main', textAlign: 'right' }}
             >
-              ₱{unitPrice.toLocaleString()}
+              ₱
+              {unitPrice.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </Typography>
           </Stack>
 

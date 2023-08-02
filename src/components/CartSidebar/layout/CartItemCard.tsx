@@ -114,7 +114,11 @@ export default function CartItemCard({ cartItemData }: Props) {
             component="span"
             sx={{ color: 'error.main' }}
           >
-            ₱{totalPrice.toLocaleString()}
+            ₱
+            {totalPrice.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </Typography>
 
           <Stack direction="row" sx={{ alignItems: 'center' }}>
