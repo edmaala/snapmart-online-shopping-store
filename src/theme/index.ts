@@ -21,7 +21,7 @@ const PROJECT_THEME = createTheme({
   },
   typography: {
     fontFamily: 'Inter, sans-serif',
-    fontSize: 14,
+    htmlFontSize: 14,
     h1: {
       fontSize: '2rem',
       fontWeight: '700',
@@ -38,6 +38,11 @@ const PROJECT_THEME = createTheme({
       fontSize: '1rem',
       fontWeight: '400',
     },
+    'body1-bold': {
+      fontSize: '1rem',
+      fontWeight: '700',
+      fontFamily: 'Inter, sans-serif',
+    },
     button: {
       fontSize: '1rem',
       fontWeight: '500',
@@ -53,40 +58,83 @@ const PROJECT_THEME = createTheme({
         {
           props: {
             variant: 'contained',
-            sx: { bgcolor: 'success.main', color: 'primary.main' },
           },
           style: {
             padding: '12px 24px',
             borderRadius: '10px',
             fontSize: '1rem',
             fontWeight: '500',
+            backgroundColor: '#A5F951',
+            color: '#000000',
+
+            '&:hover': {
+              backgroundColor: '#6ABD81',
+            },
           },
         },
         {
           props: {
             variant: 'contained-sml',
-            sx: { bgcolor: 'success.main', color: 'primary.main' },
           },
           style: {
             padding: '8px',
             borderRadius: '8px',
             fontSize: '0.8rem',
             fontWeight: '500',
+            backgroundColor: '#A5F951',
+            color: '#000000',
+
+            '&:hover': {
+              backgroundColor: '#6ABD81',
+            },
           },
         },
         {
           props: {
             variant: 'contained-sml-red',
-            sx: { bgcolor: 'error.main', color: 'primary.main' },
           },
           style: {
             padding: '8px',
             borderRadius: '8px',
             fontSize: '0.8rem',
             fontWeight: '500',
+            backgroundColor: '#EB3838',
+            color: '#000000',
+
+            '&: hover': {
+              backgroundColor: '#B82C2C',
+              color: '#FFFFFF',
+            },
           },
         },
       ],
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'transparent',
+          color: '#505050',
+          padding: '12px 24px',
+          fontSize: '1rem',
+          fontWeight: '500',
+          textTransform: 'capitalize',
+          border: 'none',
+          textAlign: 'left',
+
+          '&:hover': {
+            backgroundColor: '#6ABD81',
+          },
+
+          '&.Mui-selected': {
+            backgroundColor: '#A5F951',
+            color: '#000000',
+
+            '&:hover': {
+              backgroundColor: '#6ABD81',
+            },
+          },
+        },
+      },
     },
   },
 });
@@ -94,11 +142,13 @@ const PROJECT_THEME = createTheme({
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     'button-sml': React.CSSProperties;
+    'body1-bold': React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     'button-sml'?: React.CSSProperties;
+    'body1-bold'?: React.CSSProperties;
   }
 }
 
@@ -106,6 +156,7 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     'button-sml': true;
+    'body1-bold': true;
   }
 }
 

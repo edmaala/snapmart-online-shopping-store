@@ -1,12 +1,13 @@
 import { ReactNode, useContext } from 'react';
-import { Box } from '@mui/material';
+import { Stack } from '@mui/material';
 import { ProjectContext } from '../project-provider';
 
 export default function BodyContainer({ children }: Props) {
   const { headerHeight } = useContext(ProjectContext);
 
   return (
-    <Box
+    <Stack
+      direction="row"
       sx={{
         width: '100%',
         height: `calc(100% - ${headerHeight}px)`,
@@ -14,7 +15,7 @@ export default function BodyContainer({ children }: Props) {
       }}
     >
       {children}
-    </Box>
+    </Stack>
   );
 }
 

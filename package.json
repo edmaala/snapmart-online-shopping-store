@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm test"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -10,7 +15,8 @@
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
     "prepare": "husky install",
-    "test": "vitest"
+    "test": "vitest --run",
+    "pre-commit": "eslint . --fix"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

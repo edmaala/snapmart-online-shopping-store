@@ -1,7 +1,9 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Header from './components/Header';
 import ProjectProvider from './project-provider';
 import BodyContainer from './components/BodyContainer';
+import FilterSidebar from './components/FilterSidebar';
+import CartSidebar from './components/CartSidebar';
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
       >
         <Header />
         <BodyContainer>
-          <Typography variant="h2">I am a sample text!</Typography>
+          <FilterSidebar />
+          <Box sx={{ width: 'calc(100% - 500px)' }} />
+          <CartSidebar />
         </BodyContainer>
       </Box>
     </ProjectProvider>
