@@ -43,7 +43,7 @@ export default function ItemList() {
     >
       <TextField
         value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
+        onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
         id="item-search-bar"
         label="Search Item"
         variant="outlined"
@@ -56,8 +56,8 @@ export default function ItemList() {
         {sortedAndFilteredItemList
           .filter(
             ({ productName, category }) =>
-              productName.includes(searchValue) ||
-              category.includes(searchValue)
+              productName.toLowerCase().includes(searchValue) ||
+              category.toLowerCase().includes(searchValue)
           )
           .map((itemData) => (
             <ItemCard key={`item-${itemData.id}`} itemData={itemData} />
